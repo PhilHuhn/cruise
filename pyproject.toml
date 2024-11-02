@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "cruise-ship-party"
+version = "0.1.0"
+description = "A simple RSVP website for a cruise ship themed party using FastAPI."
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.95.0"
+uvicorn = "^0.15.0"
+sqlalchemy = "^1.4.22"
+jinja2 = "^3.0.1"
+aiofiles = "^24.1.0"
+starlette = "^0.27.0"
+python-multipart = "0.0.17"
+pydantic = { version="^1.8.2", extras=["email"] }
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

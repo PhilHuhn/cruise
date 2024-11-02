@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cruise Ship Party RSVP</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>🎉 Welcome to the Ultimate 80s Cruise Ship Party! 🎉</h1>
+    <form id="rsvp-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="attending">Will you attend?</label>
+        <input type="checkbox" id="attending" name="attending"><br>
+
+        <label for="bringing_food">Bringing Food:</label>
+        <input type="checkbox" id="bringing_food" name="bringing_food"><br>
+
+        <label for="bringing_drink">Bringing Drink:</label>
+        <input type="checkbox" id="bringing_drink" name="bringing_drink"><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea><br>
+
+        <button type="submit">Send RSVP 🚢</button>
+    </form>
+
+    <!-- Flash Notification Container -->
+    <div id="flash-message"></div>
+
+    <script>
+        document.getElementById("rsvp-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const formObject = Object.fromEntries(formData.entries());
+
+            // Convert checkboxes to booleans
+            formObject.attending = formData.has("attending");
+            formObject.bringing_food = formData.has("bringing_food");
+            formObject.bringing_drink = formData.has("bringing_drink");
+
+            try {
+                const response = await fetch("/rsvp/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formObject)
+                });
+
+                const result = await response.json();
+
+                // Display flash message
+                const flashMessage = document.getElementById("flash-message");
+
+                if (response.ok) {
+                    flashMessage.className = 'flash-success';
+                    flashMessage.textContent = result.message || "RSVP received!";
+                } else {
+                    flashMessage.className = 'flash-error';
+                    flashMessage.textContent = result.message || "There was an issue with your RSVP.";
+                }
+
+                flashMessage.style.display = "block";
+
+                setTimeout(() => {
+                    flashMessage.style.display = "none";
+                }, 3000);
+
+            } catch (error) {
+                console.error("Error:", error);
+
+                const flashMessage = document.getElementById("flash-message");
+                flashMessage.className = 'flash-error';
+                flashMessage.textContent = "An error occurred. Please try again.";
+                flashMessage.style.display = "block";
+
+                setTimeout(() => {
+                    flashMessage.style.display = "none";
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

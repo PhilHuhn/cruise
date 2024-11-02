@@ -1,0 +1,82 @@
+/* 80s Cruise Ship Party Theme - Kung Fury Inspired */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2a1f72, #ff007f);
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    margin: 20px;
+    background-size: cover;
+}
+
+h1, h2 {
+    font-family: 'Sansita Swashed', cursive;
+    color: #ff007f;
+    text-align: center;
+    text-shadow: 0 0 10px #ff007f, 0 0 20px #00d4ff;
+    margin-bottom: 20px;
+}
+
+button {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background: #00d4ff;
+    color: #2a1f72;
+    border: 2px solid #ff007f;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.5);
+}
+
+button:hover {
+    background: #ff007f;
+    color: #ffffff;
+    box-shadow: 0 0 10px #00d4ff, 0 0 20px #ff007f;
+}
+
+input, textarea {
+    font-family: 'Courier New', monospace;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #00d4ff;
+    margin-top: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    font-weight: bold;
+    color: #00d4ff;
+    margin-top: 15px;
+}
+
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(42, 31, 114, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(255, 0, 127, 0.3);
+}
+
+/* Flash Message Styling */
+#flash-message {
+    display: none;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;  /* Ensure text color is set */
+}
+
+/* Success and Error Flash Colors */
+.flash-success {
+    background-color: #00d4ff;  /* Light blue background */
+    color: #2a1f72;  /* Dark text for contrast */
+}
+
+.flash-error {
+    background-color: #ff007f;  /* Bright pink background */
+    color: #ffffff;  /* White text for contrast */
+}
